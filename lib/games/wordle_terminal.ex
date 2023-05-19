@@ -139,6 +139,7 @@ defmodule Games.WordleTerminal do
   @spec feedback(list(), list()) :: list()
   def feedback(answer_list, guess_list) do
     zipped_list = Enum.zip(guess_list, answer_list)
+    # |> IO.inspect()
 
     Enum.map(zipped_list, fn {guess_char, answer_char} ->
       cond do
@@ -148,6 +149,14 @@ defmodule Games.WordleTerminal do
       end
     end)
   end
+
+  # def colorize(color, guess_char) do
+  #   case color do
+  #     :grey -> IO.ANSI.light_black() <> guess_char
+  #     :yellow -> IO.ANSI.yellow() <> guess_char
+  #     :green -> IO.ANSI.green() <> guess_char
+  #   end
+  # end
 
   def retry do
     reply =
